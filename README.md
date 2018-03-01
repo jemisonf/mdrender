@@ -1,1 +1,5 @@
-This is the readme for mdrender
+# Requirements
+
+Only tested in Linux. 
+
+Requires the GCC compiler
