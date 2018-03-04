@@ -1,5 +1,5 @@
 *.o
 *.out
 *.a
-
+.DS_Store
 *.swp
