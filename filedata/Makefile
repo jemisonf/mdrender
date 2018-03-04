@@ -30,7 +30,7 @@ CXXFLAGS += -g -Wall -Wextra -pthread
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
 # TESTS = sample1_unittest
-TESTS = text_node_test
+TESTS = text_node_test md_data_test
 
 # All Google Test headers.  Usually you shouldn't change this
 # definition.
@@ -72,15 +72,15 @@ gtest_main.a : gtest-all.o gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
-sample1.o : $(USER_DIR)/sample1.cc $(USER_DIR)/sample1.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1.cc
+# sample1.o : $(USER_DIR)/sample1.cc $(USER_DIR)/sample1.h $(GTEST_HEADERS)
+# 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1.cc
 
-sample1_unittest.o : $(USER_DIR)/sample1_unittest.cc \
+# sample1_unittest.o : $(USER_DIR)/sample1_unittest.cc \
 	$(USER_DIR)/sample1.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1_unittest.cc
+# 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1_unittest.cc
 
-sample1_unittest : sample1.o sample1_unittest.o gtest_main.a
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
+# sample1_unittest : sample1.o sample1_unittest.o gtest_main.a
+# 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
 
 text_node.o : $(USER_DIR)/text_node.cpp $(USER_DIR)/text_node.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/text_node.cpp
@@ -90,4 +90,14 @@ text_node_text.o : $(USER_DIR)/text_node_test.cpp \
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/text_node_test.cpp
 
 text_node_test: text_node.o text_node_test.o gtest_main.a
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
+
+md_data.o : $(USER_DIR)/md_data.cpp $(USER_DIR)/md_data.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/md_data.cpp
+
+md_data_test.o : $(USER_DIR)/md_data_test.cpp \
+	$(USER_DIR)/md_data.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/md_data_test.cpp
+
+md_data_test: md_data.o md_data_test.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
