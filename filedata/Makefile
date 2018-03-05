@@ -99,5 +99,5 @@ md_data_test.o : $(USER_DIR)/md_data_test.cpp \
 	$(USER_DIR)/md_data.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/md_data_test.cpp
 
-md_data_test: md_data.o md_data_test.o gtest_main.a
+md_data_test: md_data.o md_data_test.o text_node.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
