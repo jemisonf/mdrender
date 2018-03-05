@@ -5,7 +5,7 @@
 #include "text_node.h"
 
 class MdData {
-  private:
+  protected:
     std::queue<TextNode> text_nodes;
   public: 
     MdData();
@@ -13,6 +13,7 @@ class MdData {
     void operator=(const MdData &);
     ~MdData();
     void enqueue_node(const TextNode &);
+    bool empty();
     const TextNode dequeue_node();
     const TextNode front_node() const; 
 };
