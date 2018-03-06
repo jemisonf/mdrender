@@ -15,6 +15,6 @@ class MdToCpp {
     MdToCpp();
     void set_filestream(const std::ifstream &);
     const MdData & get_md_data();
-}
+};
 
 #endif
