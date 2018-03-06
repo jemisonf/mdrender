@@ -1,5 +1,5 @@
 #ifndef MDDATA_H
-#define DATA_H
+#define MDDATA_H
 
 #include <queue>
 #include "text_node.h"

@@ -1,7 +1,15 @@
-#include <cpp_to_html.h>
+#include "cpp_to_html.h"
 
-CppToHTML::CppToHTML(){
+CppToHtml::CppToHtml(){
 
 }
 
+void CppToHtml::set_data(MdData *data){
+}
+
+const std::string CppToHtml::get_html(){
+  std::string html;
+  return html;
+
+}
 
