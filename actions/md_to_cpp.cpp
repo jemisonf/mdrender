@@ -4,22 +4,23 @@ MdToCpp::MdToCpp() {
 
 }
 
-void MdToCpp::set_filestream(const std::ifstream &input_stream) {
-  this->file_stream = input_stream;
+void MdToCpp::set_file(const std::string filename) {
+  this->file_stream.open(filename.c_str());
 }
 
-const MdData & MdToCpp::get_md_data() {
+const MdData MdToCpp::get_md_data() {
+  MdData data;
   // initialize new MdData
   // for each line in file_stream
     // call parse_line
     // add the result to MdData
   // return MdData
+  return data;
 }
 
 TextNode MdToCpp::parse_line(const std::string line) {
-  char temp = line[0]
   int text_start;
-  std::string type, text = '';
+  std::string type, text = "";
   if (line[0] == '#') {
     while (line[text_start] == '#') {
       text_start++;

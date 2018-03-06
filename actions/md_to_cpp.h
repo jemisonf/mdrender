@@ -13,8 +13,8 @@ class MdToCpp {
     std::ifstream file_stream;
   public:
     MdToCpp();
-    void set_filestream(const std::ifstream &);
-    const MdData & get_md_data();
+    void set_file(const std::string);
+    const MdData get_md_data();
 };
 
 #endif
