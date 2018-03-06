@@ -41,6 +41,7 @@ text_node.o : $(FILEDATA_DIR)/text_node.cpp $(FILEDATA_DIR)/text_node.h $(GTEST_
 gtest_main.a : gtest-all.o gtest_main.o
 	$(AR) $(ARFLAGS) $@ $^
 
+
 md_to_cpp.o : $(USER_DIR)/md_to_cpp.cpp $(USER_DIR)/md_to_cpp.h $(GTEST_HEADERS) 
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/md_to_cpp.cpp
 
@@ -49,4 +50,15 @@ md_to_cpp_test.o : $(USER_DIR)/md_to_cpp_test.cpp \
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/md_to_cpp_test.cpp
 
 md_to_cpp_test : md_to_cpp.o md_to_cpp_test.o gtest_main.a $(FILEDATA_INCL)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
+
+
+cpp_to_html.o: $(USER_DIR)/cpp_to_html.cpp $(USER_DIR)/cpp_to_html.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/cpp_to_html.cpp
+
+cpp_to_html_test.o: $(USER_DIR)/cpp_to_html_test.cpp \
+	$(USER_DIR)/cpp_to_html.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/cpp_to_html_test.cpp
+
+cpp_to_html_test: cpp_to_html.o cpp_to_html_test.o gtest_main.a $(FILEDATA_INCL)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
