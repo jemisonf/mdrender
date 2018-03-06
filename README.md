@@ -2,4 +2,4 @@
 
 Only tested in Linux. 
 
-Requires the GCC compiler
+Requires the GNU compiler
