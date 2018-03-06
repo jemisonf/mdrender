@@ -9,7 +9,7 @@ CPPFLAGS += -isystem $(GTEST_DIR)/include
 CXXFLAGS += -g -Wall -Wextra -pthread
 
 #TESTS = text_node_test md_data_test
-TESTS = md_to_cpp_test 
+TESTS = cpp_to_html_test md_to_cpp_test 
 
 GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 	$(GTEST_DIR)/include/gtest/internal/*.h
@@ -60,5 +60,5 @@ cpp_to_html_test.o: $(USER_DIR)/cpp_to_html_test.cpp \
 	$(USER_DIR)/cpp_to_html.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/cpp_to_html_test.cpp
 
-cpp_to_html_test: cpp_to_html.o cpp_to_html_test.o gtest_main.a $(FILEDATA_INCL)
+cpp_to_html_test: cpp_to_html.o cpp_to_html_test.o gtest_main.a md_to_cpp.o $(FILEDATA_INCL)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
