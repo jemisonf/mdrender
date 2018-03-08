@@ -24,13 +24,13 @@ TEST_F(MdToCppTest, header_test) {
   converter.set_file(filename);
   output = converter.get_md_data();
   EXPECT_FALSE(output.empty());
-  /*
-  for (int i = 0; i < 7; i++) {
-    temp_node = output.dequeue_node();
-    EXPECT_EQ(temp_node.get_text(), expected_outputs[i]);
-    EXPECT_EQ(temp_node.get_type(), expected_types[i]);
+  if (!output.empty()) {
+    for (int i = 0; i < 7; i++) {
+      temp_node = output.dequeue_node();
+      EXPECT_EQ(temp_node.get_text(), expected_outputs[i]);
+      EXPECT_EQ(temp_node.get_type(), expected_types[i]);
+    }
   }
-  */
 }
 
 int main(int argc, char* argv[]) {
