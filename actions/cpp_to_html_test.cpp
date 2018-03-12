@@ -37,9 +37,3 @@ TEST_F(CppToHtmlTest, header_test){
 
   EXPECT_EQ(html, expected_html);
 }
-
-int main(int argc, char* argv[]){
-  testing::InitGoogleTest(&argc, argv);
-
-  return RUN_ALL_TESTS();
-}

@@ -37,7 +37,3 @@ TEST_F(TextNodeTest, set_type) {
   EXPECT_EQ(new_type, test_node.get_type());
 }
 
-int main(int argc, char* argv[]) {
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
