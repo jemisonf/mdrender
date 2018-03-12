@@ -24,23 +24,22 @@ class CppToHtmlTest : public::testing::Test {
 };
 
 TEST_F(CppToHtmlTest, header_test){
+  std::string expected_html = get_expected_html("headers.html");
   MdToCpp converter;
-  MdData input = converter.get_md_data();
-  TextNode temp_node;
   std::string filename = TEST_IN_FILE_PATH;
   filename += "headers.md";
   converter.set_file(filename);
+  MdData input = converter.get_md_data();
 
   CppToHtml html_maker;
   html_maker.set_data(&input);
   std::string html = html_maker.get_html();
-
-  std::string expected_html = get_expected_html("headers.html");
 
   EXPECT_EQ(html, expected_html);
 }
 
 int main(int argc, char* argv[]){
   testing::InitGoogleTest(&argc, argv);
+
   return RUN_ALL_TESTS();
 }
