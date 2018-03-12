@@ -3,6 +3,8 @@
 
 using namespace std;
 
+void displayHelp();
+
 void displayHelp() {
 
 	cout << endl;
@@ -36,9 +38,3 @@ void displayHelp() {
 }
 
 
-int main(int argc, char* argv[]) {
-	for (int i = 0; i < argc; i++) {
-		if (strstr (argv[i], "help") != NULL) 
-			displayHelp();
-	}
-}	
