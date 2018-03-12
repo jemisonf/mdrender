@@ -18,7 +18,7 @@ const MdData MdToCpp::get_md_data() {
 }
 
 TextNode MdToCpp::parse_line(const std::string line) {
-  int text_start;
+  int text_start = 0;
   std::string type, text = "";
   if (line[0] == '#') {
     while (line[text_start] == '#') {
@@ -26,7 +26,7 @@ TextNode MdToCpp::parse_line(const std::string line) {
     }
     type = "h";
     type += (char) text_start + 48;
-    text = line.substr(text_start + 1, line.length() - text_start);
+    text = line.substr(text_start + 1, line.length() - (text_start + 1));
   } else if ((line[0] > '0' && line[0] <= '9') 
       && (line[1] && line[1] == '.' )
       && (line[2] && line[2] == ' ')) {
