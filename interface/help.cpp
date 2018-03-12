@@ -3,8 +3,6 @@
 
 using namespace std;
 
-void displayHelp();
-
 void displayHelp() {
 
 	cout << endl;

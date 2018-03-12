@@ -25,6 +25,44 @@ const std::string CppToHtml::get_html(){
     else if (cur_node_type[0] == 'p'){
       line += "<p>" + cur_node_text + "</p>\n";
     }
+
+    
+    std::size_t found = line.find("**");
+    if (found!=std::string::npos) {
+      line.replace(line.begin()+found, line.begin()+found+2,"<b>");
+      found = line.find("**");
+      line.replace(line.begin()+found,line.begin()+found+2,"</b>");
+    }
+
+    found = line.find("__");
+    if (found!=std::string::npos) {
+      line.replace(line.begin()+found, line.begin()+found+2,"<b>");
+      found = line.find("__");
+      line.replace(line.begin()+found,line.begin()+found+2,"</b>");
+    }
+
+    found = line.find("*");
+    if (found!=std::string::npos) {
+      line.replace(line.begin()+found,line.begin()+found+1,"<em>");
+      found = line.find("*");
+      line.replace(line.begin()+found,line.begin()+found+1,"</em>");
+    }
+
+    found = line.find("_");
+    if (found!=std::string::npos) {
+      line.replace(line.begin()+found, line.begin()+found+1,"<em>");
+      found = line.find("_");
+      line.replace(line.begin()+found,line.begin()+found+1,"</em>");
+    }
+
+
+    found = line.find("~~");
+    if (found!=std::string::npos) {
+      line.replace(line.begin()+found,line.begin()+found+2,"<del>");
+      found = line.find("~~");
+      line.replace(line.begin()+found,line.begin()+found+2,"</del>");
+    }
+
     html += line;
   }
 
