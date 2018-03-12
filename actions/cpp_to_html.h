@@ -12,6 +12,9 @@ class CppToHtml {
     CppToHtml();
     void set_data(MdData*);
     const std::string get_html();
+  private:
+    std::string html;
+    MdData data;
 };
 
 
