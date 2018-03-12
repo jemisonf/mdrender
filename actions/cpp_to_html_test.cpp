@@ -25,11 +25,21 @@ class CppToHtmlTest : public::testing::Test {
 
 TEST_F(CppToHtmlTest, header_test){
   std::string expected_html = get_expected_html("headers.html");
-  MdToCpp converter;
-  std::string filename = TEST_IN_FILE_PATH;
-  filename += "headers.md";
-  converter.set_file(filename);
-  MdData input = converter.get_md_data();
+  MdData input;
+
+  TextNode start_node;
+  start_node.set_text("https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet");
+  start_node.set_type("p");
+  input.enqueue_node(start_node);
+
+  TextNode header_node;
+  string tags[] = {"h1", "h2", "h3", "h4", "h5", "h6"};
+  string text[] = {"H1", "H2", "H3", "H4", "H5", "H6"};
+  for(int i = 0; i < 6; i++){
+    header_node.set_text(text[i]);
+    header_node.set_type(tags[i]);
+    input.enqueue_node(header_node);
+  }
 
   CppToHtml html_maker;
   html_maker.set_data(&input);
