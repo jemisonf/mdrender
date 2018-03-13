@@ -2,8 +2,8 @@
 #include "cpp_to_html.h"
 #include "md_to_cpp.h"
 
-#define TEST_IN_FILE_PATH "../testfiles/"
-#define TEST_OUT_FILE_PATH "../testfiles/prewritten_out/"
+#define TEST_IN_FILE_PATH "testfiles/"
+#define TEST_OUT_FILE_PATH "testfiles/prewritten_out/"
 
 using namespace std;
 
@@ -23,10 +23,7 @@ class CppToHtmlTest : public::testing::Test {
     }
 };
 
-TEST_F(CppToHtmlTest, header_test){
-  std::string expected_html = get_expected_html("headers.html");
-  MdData input;
-
+void make_md_data_header(MdData & input){
   TextNode start_node;
   start_node.set_text("https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet");
   start_node.set_type("p");
@@ -40,6 +37,12 @@ TEST_F(CppToHtmlTest, header_test){
     header_node.set_type(tags[i]);
     input.enqueue_node(header_node);
   }
+}
+
+TEST_F(CppToHtmlTest, header_test){
+  std::string expected_html = get_expected_html("headers.html");
+  MdData input;
+  make_md_data_header(input);
 
   CppToHtml html_maker;
   html_maker.set_data(&input);
