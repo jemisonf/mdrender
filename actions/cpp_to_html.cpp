@@ -15,6 +15,7 @@ const std::string CppToHtml::get_html(){
     TextNode cur_node = data.dequeue_node();
     std::string cur_node_type = cur_node.get_type();
     std::string cur_node_text = cur_node.get_text();
+    std::string last_node_type = "";
     //header
     if (cur_node_type[0] == 'h'){
       std::string tag = "h";
@@ -26,6 +27,19 @@ const std::string CppToHtml::get_html(){
       line += "<p>" + cur_node_text + "</p>\n";
     }
 
+    else if (cur_node_type[0] == 'o') {
+/*
+      if (last_node_type[0] != 'o') {
+         std::string hold = "<ol>" + '\n';
+         html += hold;
+      }
+*/
+      line += "<li>" + cur_node_text + "</li>\n";
+    }
+
+    else if (cur_node_type[0] == 'u') {
+      line += "<li>" + cur_node_text + "</li>\n";
+    }
     
     std::size_t found = line.find("**");
     if (found!=std::string::npos) {
@@ -63,7 +77,9 @@ const std::string CppToHtml::get_html(){
       line.replace(line.begin()+found,line.begin()+found+2,"</del>");
     }
 
+    last_node_type = cur_node_type;
     html += line;
+
   }
 
   return this->html;
