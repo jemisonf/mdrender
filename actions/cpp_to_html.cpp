@@ -34,13 +34,25 @@ const std::string CppToHtml::get_html(){
          html += hold;
       }
 */
+      if(html[html.length() - 3] != 'i'){
+        line += "<ol>\n";
+      }
       line += "<li>" + cur_node_text + "</li>\n";
+      if(data.front_node().get_type() != "ol"){
+        line += "</ol>\n";
+      }     
     }
 
     else if (cur_node_type[0] == 'u') {
+      if(html[html.length() - 3] != 'i'){
+        line += "<ul>\n";
+      }
       line += "<li>" + cur_node_text + "</li>\n";
+      if(data.front_node().get_type() != "ul"){
+        line += "</ul>\n";
+      }
     }
-    
+
     std::size_t found = line.find("**");
     if (found!=std::string::npos) {
       line.replace(line.begin()+found, line.begin()+found+2,"<b>");
