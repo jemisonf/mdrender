@@ -38,7 +38,7 @@ const std::string CppToHtml::get_html(){
         line += "<ol>\n";
       }
       line += "<li>" + cur_node_text + "</li>\n";
-      if(data.front_node().get_type() != "ol"){
+      if(data.empty() || data.front_node().get_type() != "ol"){
         line += "</ol>\n";
       }     
     }
@@ -48,7 +48,7 @@ const std::string CppToHtml::get_html(){
         line += "<ul>\n";
       }
       line += "<li>" + cur_node_text + "</li>\n";
-      if(data.front_node().get_type() != "ul"){
+      if(data.empty() || data.front_node().get_type() != "ul"){
         line += "</ul>\n";
       }
     }
