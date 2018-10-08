@@ -11,3 +11,5 @@
 interface/mdrender
 interface/*.html
 actions/cpp_to_html_test
+all_tests
+test.md
