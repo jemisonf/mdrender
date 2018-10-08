@@ -6,6 +6,12 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Sync git submodules
+          command: git submodule sync
+      - run:
+          name: Update git submodules
+          command: git submodule update
+      - run:
           name: Greeting
           command: echo Hello, world.
       - run:
