@@ -1,8 +1,8 @@
 #ifndef MD_TO_CPP_H
 #define MD_TO_CPP_H
 
-#include "../filedata/md_data.h"
-#include "../filedata/text_node.h"
+#include "md_data.h"
+#include "text_node.h"
 #include <iostream>
 #include <string>
 #include <fstream>

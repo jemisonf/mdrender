@@ -22,7 +22,7 @@ USER_DIR = .
 # Flags passed to the preprocessor.
 # Set Google Test's header directory as a system directory, such that
 # the compiler doesn't generate warnings in Google Test headers.
-CPPFLAGS += -isystem $(GTEST_DIR)/include
+CPPFLAGS += -isystem $(GTEST_DIR)/include -I include/
 
 # Flags passed to the C++ compiler.
 CXXFLAGS += -g -Wall -Wextra -pthread
@@ -44,25 +44,25 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 all : $(TESTS_O) $(FILES_O) gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o all_tests
 
-cpp_to_html.o: actions/cpp_to_html.cpp actions/cpp_to_html.h $(GTEST_HEADERS)
+cpp_to_html.o: actions/cpp_to_html.cpp include/cpp_to_html.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c actions/cpp_to_html.cpp
 
 cpp_to_html_test.o: actions/cpp_to_html_test.cpp  $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c actions/cpp_to_html_test.cpp
 
-md_to_cpp.o: actions/md_to_cpp.cpp actions/md_to_cpp.h $(GTEST_HEADERS)
+md_to_cpp.o: actions/md_to_cpp.cpp include/md_to_cpp.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c actions/md_to_cpp.cpp
 
 md_to_cpp_test.o: actions/md_to_cpp_test.cpp $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c actions/md_to_cpp_test.cpp
 
-text_node.o: filedata/text_node.cpp filedata/text_node.h $(GTEST_HEADERS)
+text_node.o: filedata/text_node.cpp include/text_node.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c filedata/text_node.cpp
 
 text_node_test.o: filedata/text_node_test.cpp $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c filedata/text_node_test.cpp 
 
-md_data.o: filedata/md_data.cpp filedata/md_data.h $(GTEST_HEADERS)
+md_data.o: filedata/md_data.cpp include/md_data.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c filedata/md_data.cpp
 
 md_data_test.o: filedata/md_data_test.cpp $(GTEST_HEADERS)
