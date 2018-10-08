@@ -6,8 +6,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Sync submodules
-          command: git submodule sync
+          name: Init submodules
+          command: git submodule init
       - run:
           name: Update submodules
           command: git submodule update
