@@ -6,6 +6,12 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Init submodules
+          command: git submodule init
+      - run:
+          name: Update submodules
+          command: git submodule update
+      - run:
           name: Make files
           command: |
             make
