@@ -9,8 +9,9 @@ class MdToCppTest : public::testing::Test {
     MdToCppTest() {
     }
   protected:
-    std::string expected_outputs[];
-    std::string expected_types[];
+    std::string expected_outputs[0];
+    std::string expected_types[0];
+
     virtual void SetUp() {
       
     }
